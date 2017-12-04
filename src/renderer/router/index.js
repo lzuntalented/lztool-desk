@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/time',
+      name: 'time-page',
+      component: require('@/pages/time/indexPage').default
+    },
+    {
       path: '/json',
       name: 'json-page',
       component: require('@/pages/json/indexPage').default

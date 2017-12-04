@@ -23,6 +23,7 @@
           <div class="title alt">Other Documentation</div>
           <button class="alt" @click="open('https://electron.atom.io/docs/')">Electron</button>
           <button class="alt" @click="open('https://vuejs.org/v2/guide/')">Vue.js</button>
+          <a class="alt" href="#/time">时间转换</a>
         </div>
       </div>
     </main>
