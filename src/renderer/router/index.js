@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/code',
+      name: 'code-page',
+      component: require('@/pages/code/indexPage').default
+    },
+    {
       path: '/time',
       name: 'time-page',
       component: require('@/pages/time/indexPage').default

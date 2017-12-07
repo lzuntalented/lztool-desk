@@ -32,11 +32,7 @@
   export default Time
 </script>
 
-<style>
-@import url(//at.alicdn.com/t/font_386007_mliceqia5p8yf1or.css);
-</style>
 <style lang="scss">
-
 .time-container{
   
 }
