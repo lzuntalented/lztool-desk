@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/qrcode',
+      name: 'qrcode-page',
+      component: require('@/pages/qrcode/indexPage').default
+    },
+    {
       path: '/code',
       name: 'code-page',
       component: require('@/pages/code/indexPage').default
