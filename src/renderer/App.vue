@@ -20,6 +20,9 @@
       <el-menu-item index="2-4">
         <a href="#/qrcode">二维码转换</a>
       </el-menu-item>
+      <el-menu-item index="2-4">
+        <a href="#/encrypt">加解密</a>
+      </el-menu-item>
     </el-submenu>
   </el-menu>
     <router-view></router-view>

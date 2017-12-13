@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/encrypt',
+      name: 'encrypt-page',
+      component: require('@/pages/encrypt/indexPage').default
+    },
+    {
       path: '/qrcode',
       name: 'qrcode-page',
       component: require('@/pages/qrcode/indexPage').default
