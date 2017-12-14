@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/xmorse',
+      name: 'xmorse-page',
+      component: require('@/pages/xmorse/indexPage').default
+    },
+    {
       path: '/encrypt',
       name: 'encrypt-page',
       component: require('@/pages/encrypt/indexPage').default
