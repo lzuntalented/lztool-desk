@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/dateChange',
+      name: 'dateChange-page',
+      component: require('@/pages/dateChange/indexPage').default
+    },
+    {
       path: '/xmorse',
       name: 'xmorse-page',
       component: require('@/pages/xmorse/indexPage').default
