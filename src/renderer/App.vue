@@ -28,7 +28,8 @@
         ['qrcode', '二维码转换'],
         ['encrypt', '加解密'],
         ['xmorse', '莫斯密码'],
-        ['dateChange', '公农历转换']
+        ['dateChange', '公农历转换'],
+        ['urlParam', 'url参数转换']
       ];
       const router = [];
       for(let len = arr.length, i = len - 1; i >= 0; --i) {

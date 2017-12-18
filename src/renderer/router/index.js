@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/urlParam',
+      name: 'urlParam-page',
+      component: require('@/pages/urlParam/indexPage').default
+    },
+    {
       path: '/dateChange',
       name: 'dateChange-page',
       component: require('@/pages/dateChange/indexPage').default
