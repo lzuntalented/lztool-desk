@@ -10,6 +10,9 @@ export default {
       }, {
         value: '1',
         label: 'SHA1'
+      }, {
+        value: '2',
+        label: 'base64'
       }],
       type: '0',
       originText: '',
@@ -22,10 +25,16 @@ export default {
         this.result = crypto.md5(this.originText);
       } else if (this.type === '1') {
         this.result = crypto.sha1(this.originText);
+      } else if (this.type === '2') {
+        this.result = crypto.base64encode(this.originText);
       }
     },
     decrypt(e){
-      this.$message.error('该功能还未实现!')
+      if (this.type === '2') {
+        this.result = crypto.base64decode(this.originText);
+      } else {
+        this.$message.error('该功能还未实现!')
+      }
     }
   }
 }

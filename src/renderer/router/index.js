@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/urlEncode',
+      name: 'urlEncode-page',
+      component: require('@/pages/urlEncode/indexPage').default
+    },
+    {
       path: '/urlParam',
       name: 'urlParam-page',
       component: require('@/pages/urlParam/indexPage').default
