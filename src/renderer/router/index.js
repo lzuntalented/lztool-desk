@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/regex',
+      name: 'regex-page',
+      component: require('@/pages/regex/indexPage').default
+    },
+    {
       path: '/urlEncode',
       name: 'urlEncode-page',
       component: require('@/pages/urlEncode/indexPage').default
