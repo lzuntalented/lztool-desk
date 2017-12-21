@@ -13,7 +13,18 @@ export default {
       mD: '',
       mH: '',
       mS: '',
-      mSS: ''
+      mSS: '',
+      options: [
+        {
+          value: 1,
+          label: '秒'
+        },
+        {
+          value: 2,
+          label: '毫秒'
+        }
+      ],
+      value: 1
     }
   },
   methods: {
@@ -40,9 +51,13 @@ export default {
       }, 1000)
     },
     changeToText () {
+      let dw = 1000;
+      if (this.value === 2) {
+        dw = 1;
+      }
       let txt = ''
       console.log(this.orginBJTime)
-      let myDate = new Date(parseInt(this.orginBJTime) * 1000)
+      let myDate = new Date(parseInt(this.orginBJTime) * dw)
       txt += myDate.getFullYear() + '/' // 获取完整的年份(4位,1970-????)
       txt += (myDate.getMonth() + 1) + '/' // 获取当前月份(0-11,0代表1月)
       txt += myDate.getDate() + ' ' // 获取当前日(1-31)

@@ -23,7 +23,7 @@ export default {
         const a = checkJsonObj(json)
         this.rawHtml = a.html
       } catch (e) {
-        alert('json format error')
+        this.$message.error('json format error')
       }
     },
     nodeClick (e) {
@@ -40,7 +40,7 @@ export default {
           let next = dom.nextSibling
           while (next) {
             if (next.tagName === 'UL') {
-              next.style.display = 'block'
+              next.style.display = 'none'
             }
             next = next.nextSibling
           }
@@ -53,7 +53,7 @@ export default {
           let next = dom.nextSibling
           while (next) {
             if (next.tagName === 'UL') {
-              next.style.display = 'none'
+              next.style.display = 'block'
             }
             next = next.nextSibling
           }

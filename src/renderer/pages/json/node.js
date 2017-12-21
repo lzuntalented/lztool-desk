@@ -47,7 +47,7 @@ var checkJsonObj = function (obj) {
 
   if (type === 'Object' || type === 'Array') {
     html += '<div class="lz-node">'
-    html += '<i class="iconfont icon-plus expand-ctrl"></i>'
+    html += '<i class="iconfont icon-minus expand-ctrl" expand="1"></i>'
     var str = ''
     if (type == 'Array') {
       str = '(' + node._children.length + ')'
@@ -67,7 +67,12 @@ var checkJsonObj = function (obj) {
     }
     html += '</ul></div>'
   } else {
-    html += '<span class="val_string" type="' + type + '">' + value + '</span>'
+    if (typeof value === 'number') {
+      html += '<span class="val_string" type="' + type + '">' + value + '</span>'
+    } else {
+      html += '<span class="val_string" type="' + type + '">"' + value + '"</span>'
+    }
+    
   }
 
   return {
