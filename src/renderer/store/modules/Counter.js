@@ -1,5 +1,11 @@
 const state = {
-  main: 0
+  main: 0,
+  songUrl: '',
+  getters: {
+    getSongUrl: function(state, rootState) {
+      return rootState.songUrl;
+    }
+  }
 }
 
 const mutations = {
@@ -8,6 +14,10 @@ const mutations = {
   },
   INCREMENT_MAIN_COUNTER (state) {
     state.main++
+  },
+  CHANGE_SONGURL(state, url) {
+    console.log(url);
+    state.songUrl = url;
   }
 }
 
@@ -15,6 +25,9 @@ const actions = {
   someAsyncTask ({ commit }) {
     // do something async
     commit('INCREMENT_MAIN_COUNTER')
+  },
+  playSong( {commit} ) {
+    commit()
   }
 }
 

@@ -12,12 +12,15 @@
         <el-menu-item :index="index + ''">{{item.label}}</el-menu-item>
       </a>
     </el-submenu>
+    <el-menu-item index="3"><a href="#/music">音乐台</a></el-menu-item>
   </el-menu>
     <router-view></router-view>
+    <lz-play></lz-play>
   </div>
 </template>
 
 <script>
+  import Play from './pages/play/indexPage';
   export default {
     name: 'lz-collect',
     data() {
@@ -43,6 +46,9 @@
       return {
         router
       }
+    },
+    components: {
+      'lz-play': Play
     }
   }
 </script>

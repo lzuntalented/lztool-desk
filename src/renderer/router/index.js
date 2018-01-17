@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/music',
+      name: 'music-page',
+      component: require('@/pages/music/indexPage').default
+    },
+    {
       path: '/regex',
       name: 'regex-page',
       component: require('@/pages/regex/indexPage').default
