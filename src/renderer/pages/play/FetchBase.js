@@ -51,6 +51,11 @@ class FetchBase{
 
     }
 
+    destroy() {
+        this.clearTimeout();
+        this.destroyPage();
+    }
+
     /**
      * 页面加载完成之后执行
      * @returns {Promise.<void>}

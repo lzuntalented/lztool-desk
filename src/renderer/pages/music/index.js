@@ -38,6 +38,7 @@ export default {
       instance.addListenCallback((list) => {
         loading.close();
         this.searchList = list;
+        instance.destroy();
       });
       instance.createPage();
     },

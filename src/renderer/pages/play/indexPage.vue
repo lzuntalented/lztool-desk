@@ -28,6 +28,7 @@
 	left: 0px;
 	width: 100%;
 	background: rgba($color: #000000, $alpha: 0.8);
+	z-index: 10;
 	.content {
 		padding: 10px 20px;
 		.but-container{

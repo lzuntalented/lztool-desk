@@ -28,6 +28,7 @@ export default {
       const instance = new SearchPage('http://music.163.com' + this.playUrl);
       instance.addListenCallback((url) => {
         lzPlay.setVidioUrl(url);
+        instance.destroy();
       });
       instance.createPage();
     },

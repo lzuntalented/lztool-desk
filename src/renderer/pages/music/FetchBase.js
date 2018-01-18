@@ -47,6 +47,11 @@ class FetchBase{
         this.instance.exit();
     }
 
+    destroy() {
+        this.clearTimeout();
+        this.destroyPage();
+    }
+
     parserDom($){
 
     }

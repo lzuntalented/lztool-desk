@@ -7,12 +7,13 @@
     text-color="#fff"
     active-text-color="#ffd04b">
     <el-submenu index="2">
-      <template slot="title">我的工作台</template>
+      <template slot="title">工具库</template>
       <a v-for="(item, index) in router" :key="index" :href="item.href" >
         <el-menu-item :index="index + ''">{{item.label}}</el-menu-item>
       </a>
     </el-submenu>
-    <el-menu-item index="3"><a href="#/music">音乐台</a></el-menu-item>
+    <el-menu-item index="41"><a href="#/music">音乐台</a></el-menu-item>
+    <el-menu-item index="42"><a href="#/markdown">Markdown</a></el-menu-item>
   </el-menu>
     <router-view></router-view>
     <lz-play></lz-play>

@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/markdown',
+      name: 'markdown-page',
+      component: require('@/pages/markdown/indexPage').default
+    },
+    {
       path: '/music',
       name: 'music-page',
       component: require('@/pages/music/indexPage').default
