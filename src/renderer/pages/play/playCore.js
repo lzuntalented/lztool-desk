@@ -83,6 +83,11 @@ let lzPlay = {
 	'getCurrettime': getCurrettime,
 	'getAlltime': getAlltime,
 	'timeChange':timeChange,
+	setVolume: function(size) {
+		if (vidio) {
+			vidio.volume = size;
+		}
+	}
 }
 
 export default lzPlay;

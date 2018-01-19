@@ -2,6 +2,7 @@ const queryString = require('query-string');
 import SearchPage from './Search';
 import lzPlay from './playCore';
 import { setInterval } from 'timers';
+import History from './history';
 
 export default {
   name: 'play-page',
@@ -12,15 +13,11 @@ export default {
       searchText: '',
       showSearchResult: false,
       searchList: [],
-      playHistory: [
-        {
-          name: '我们没在一起'
-        },
-        {
-          name: '再多一天'
-        }
-      ],
-      recommend: []
+      playHistory: [],
+      recommend: [],
+      volume: 50,
+      showVolumeTag: false,
+      playTag : false,
     }
   },
   methods: {
@@ -28,6 +25,7 @@ export default {
       const instance = new SearchPage('http://music.163.com' + this.playUrl);
       instance.addListenCallback((url) => {
         lzPlay.setVidioUrl(url);
+        this.playTag = true;
         instance.destroy();
       });
       instance.createPage();
@@ -42,17 +40,37 @@ export default {
     },
     changeProgress(pro) {
       lzPlay.vidioPlay(lzPlay.getAlltime() * (pro / 100));
+    },
+    showVolume() {
+      this.showVolumeTag = !this.showVolumeTag;
+    },
+    paly() {
+      this.playTag = true;
+      lzPlay.vidioPlay();
+    },
+    pause() {
+      this.playTag = false;
+      lzPlay.vidioPause();
+    },
+    changeVolume(pro){
+      lzPlay.setVolume(pro / 100);
     }
   },
   created() {
+    const self = this;
     lzPlay.initVidio({
       'loadeddata': () => {
         this.startTimer();
       },
+      vidioPlay() {
+        
+      }
     });
     this.$store.subscribe((mutation, state) => {
       if (mutation.type === 'CHANGE_SONGURL'){
-        this.playUrl = mutation.payload;
+        const obj = mutation.payload;
+        History.add(obj);
+        this.playUrl = obj.href;
         this.search();
         // lzPlay.setVidioUrl(mutation.payload);
       }

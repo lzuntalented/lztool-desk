@@ -31,7 +31,7 @@
 							label="搜索结果"
 							>
 							<template slot-scope="scope">
-								<i class="el-icon-caret-right" @click="play(scope.row.href)"></i>
+								<i class="iconfont icon-bofang cursor-pointer" @click="play(scope.row)"></i>
 								<span style="margin-left: 10px">{{ scope.row.name }}</span>
 							</template>
 						</el-table-column>
@@ -54,6 +54,10 @@
 					prop="name"
 					label="最近播放"
 					>
+					<template slot-scope="scope">
+						<i class="iconfont icon-bofang cursor-pointer" @click="play(scope.row)"></i>
+						<span style="margin-left: 10px">{{ scope.row.name }}</span>
+					</template>
 				</el-table-column>
 				</el-table>
 				</el-card>
@@ -69,6 +73,9 @@
 
 <style lang="scss">
 .music-container{
+	.cursor-pointer{
+		cursor: pointer
+	}
 	.f12{
 		font-size: 12px;
 	}

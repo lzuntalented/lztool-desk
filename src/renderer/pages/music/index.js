@@ -1,5 +1,6 @@
 const queryString = require('query-string');
 import SearchPage from './Search';
+import Histroy from '../play/history';
 
 export default {
   name: 'music-page',
@@ -18,6 +19,10 @@ export default {
       ],
       recommend: []
     }
+  },
+  created() {
+    console.log(Histroy.get());
+    this.playHistory = Histroy.get();
   },
   methods: {
     search() {
@@ -47,9 +52,11 @@ export default {
         this.showSearchResult = false;
       }
     },
-    play(url) {
-      this.$store.commit('CHANGE_SONGURL', url);
-      console.log(url);
+    play(obj) {
+      this.$store.commit('CHANGE_SONGURL', {
+        name: obj.name,
+        href: obj.href
+      });
     }
   }
 }

@@ -2,13 +2,23 @@
 	<div class="play-container">
 		<div class="content">
 			<el-row class="m-t-10">
-				<el-col :span="16">
+				<el-col :span="24" class="control-container">
+					<i @click="paly" class="iconfont icon-bofang cursor-pointer play-icon" v-if="!playTag"></i>
+					<i @click="pause" class="iconfont icon-suspend_icon cursor-pointer play-icon" v-if="playTag"></i>
 					<el-slider @change="changeProgress" v-model="progress"></el-slider>
-				</el-col>
-				<el-col :span="8">
-					<div class="but-container" >
-						<el-button type="primary" @click="search" size="mini" round>播放</el-button>
+					<div class="volume-icon">
+						<i @click="showVolume" class="iconfont icon-yinliang cursor-pointer">
+						</i>
+						<el-slider
+							@change="changeVolume"
+							v-if="showVolumeTag"
+							class="slide"
+							v-model="volume"
+							vertical
+							height="100px">
+							</el-slider>
 					</div>
+					
 				</el-col>
 			</el-row>
 		</div>
@@ -57,6 +67,32 @@
 	}
 	.p-r-10{
 		padding-right: 10px;
+	}
+	.control-container {
+		padding: 0px 50px;
+		position: relative;
+	}
+	.cursor-pointer{
+		cursor: pointer
+	}
+	.play-icon {
+		font-size: 30px;
+		position: absolute;
+		left: 0px;
+		top: 2px;
+		color: white;
+	}
+	.volume-icon {
+		font-size: 20px;
+		position: absolute;
+		right: 10px;
+		top: 6px;
+		color: white;
+		.slide {
+			position: absolute;
+			right: -10px;
+			bottom: 30px;
+		}
 	}
 }
 
