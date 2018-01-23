@@ -15,9 +15,20 @@ export default {
       searchList: [],
       playHistory: [],
       recommend: [],
+      // 默认音量
       volume: 50,
+      // 是否显示声音调节
       showVolumeTag: false,
+      // 是否播放标志
       playTag : false,
+      // 播放列表
+      playList: [],
+      // 当前播放序号
+      playIndex: 0,
+      // 当前播放事件
+      currentTime: '00:00',
+      // 歌曲总时间
+      allTime: '00:00'
     }
   },
   methods: {
@@ -36,10 +47,12 @@ export default {
         const all = lzPlay.getAlltime();
         const cur = lzPlay.getCurrettime();
         this.progress = Math.floor(cur / all * 10000) / 100; 
+        this.currentTime = lzPlay.timeChange(lzPlay.getCurrettime());
       }, 1000);
     },
     changeProgress(pro) {
       lzPlay.vidioPlay(lzPlay.getAlltime() * (pro / 100));
+      this.currentTime = lzPlay.timeChange(lzPlay.getCurrettime());
     },
     showVolume() {
       this.showVolumeTag = !this.showVolumeTag;
@@ -59,20 +72,36 @@ export default {
   created() {
     const self = this;
     lzPlay.initVidio({
+      // 音乐数据缓存完毕
       'loadeddata': () => {
-        this.startTimer();
+        // 开始播放
+        self.startTimer();
+        self.allTime = lzPlay.timeChange(lzPlay.getAlltime());
+        self.currentTime = lzPlay.timeChange(0);
+        self.playTag = true;
       },
-      vidioPlay() {
-        
+      // 播放结束
+      ended: () => {
+        self.playTag = false;
+        if (self.playIndex + 1 < self.playList.length) {
+          self.playIndex += 1;
+        } else {
+          self.playIndex = 0;
+        }
+        self.playUrl = self.playList[self.playIndex].href;
+        self.search();
       }
     });
+
+    // 监听播放事件
     this.$store.subscribe((mutation, state) => {
       if (mutation.type === 'CHANGE_SONGURL'){
         const obj = mutation.payload;
         History.add(obj);
+        this.playList = History.get();
         this.playUrl = obj.href;
+        this.playIndex = 0;
         this.search();
-        // lzPlay.setVidioUrl(mutation.payload);
       }
     })
   }

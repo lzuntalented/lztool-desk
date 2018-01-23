@@ -3,6 +3,7 @@ const historyName = "lz.play.history";
 export default {
     add(obj) {
         let list = this.get();
+        list = list.reverse();
         if (list) {
             for (let len = list.length, i = len - 1; i >= 0; --i) {
                 if (list[i].href === obj.href) {

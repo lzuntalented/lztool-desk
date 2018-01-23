@@ -6,6 +6,9 @@
 					<i @click="paly" class="iconfont icon-bofang cursor-pointer play-icon" v-if="!playTag"></i>
 					<i @click="pause" class="iconfont icon-suspend_icon cursor-pointer play-icon" v-if="playTag"></i>
 					<el-slider @change="changeProgress" v-model="progress"></el-slider>
+					<div class="time-change">
+						{{currentTime}} / {{allTime}}
+					</div>
 					<div class="volume-icon">
 						<i @click="showVolume" class="iconfont icon-yinliang cursor-pointer">
 						</i>
@@ -70,6 +73,7 @@
 	}
 	.control-container {
 		padding: 0px 50px;
+		padding-right: 120px;
 		position: relative;
 	}
 	.cursor-pointer{
@@ -81,6 +85,13 @@
 		left: 0px;
 		top: 2px;
 		color: white;
+	}
+	.time-change{
+		font-size: 12px;
+		color: #a1a1a1;
+		position: absolute;
+		right: 40px;
+		top: 13px;
 	}
 	.volume-icon {
 		font-size: 20px;

@@ -12,8 +12,12 @@
         <el-menu-item :index="index + ''">{{item.label}}</el-menu-item>
       </a>
     </el-submenu>
-    <el-menu-item index="41"><a href="#/music">音乐台</a></el-menu-item>
-    <el-menu-item index="42"><a href="#/markdown">Markdown</a></el-menu-item>
+    <a href="#/music">
+      <el-menu-item index="41">音乐台</el-menu-item>
+    </a>
+    <a href="#/markdown">
+      <el-menu-item index="42">Markdown</el-menu-item>
+    </a>
   </el-menu>
     <router-view></router-view>
     <lz-play></lz-play>
