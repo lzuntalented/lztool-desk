@@ -1,10 +1,13 @@
 <template>
-	<div class="play-container">
-		<div class="content">
+	<div class="play-container width-100">
+		<div v-bind:class="detailClass">
+			<div class="over-flow-hidden width-100">
+				<i class="iconfont icon-xiala hide-icon" @click="hideDetail" />
+			</div>
 			<el-row class="m-t-10">
 				<el-col :span="24" class="control-container">
 					<i @click="paly" class="iconfont icon-bofang cursor-pointer play-icon" v-if="!playTag"></i>
-					<i @click="pause" class="iconfont icon-suspend_icon cursor-pointer play-icon" v-if="playTag"></i>
+					<i @click="pause" class="iconfont icon-suspend_icon cursor-pointer pause-icon" v-if="playTag"></i>
 					<el-slider @change="changeProgress" v-model="progress"></el-slider>
 					<div class="time-change">
 						{{currentTime}} / {{allTime}}
@@ -25,7 +28,15 @@
 				</el-col>
 			</el-row>
 		</div>
-		
+		<div v-bind:class="showProgress">
+			<div class="expand">
+				<i @click="showDetail" class="iconfont icon-zhankai" />
+			</div>
+			<div class="i-con">
+				<i @click="paly" class="iconfont icon-bofang cursor-pointer play-icon" v-if="!playTag"></i>
+				<i @click="pause" class="iconfont icon-suspend_icon cursor-pointer pause-icon" v-if="playTag"></i>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -39,9 +50,26 @@
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
-	width: 100%;
-	background: rgba($color: #000000, $alpha: 0.8);
+	background: #373c46;
 	z-index: 10;
+	.over-flow-hidden{
+		overflow: hidden;
+	}
+	.hide-icon{
+		position: absolute;
+		right: 30px;
+		top: -20px;
+		font-size: 25px;
+		color: #cccdd0;
+		background: #373c46;
+		cursor: pointer;
+	}
+	.display-none {
+		display: none;
+	}
+	&.width-100{
+		width: 100%;
+	}
 	.content {
 		padding: 10px 20px;
 		.but-container{
@@ -86,6 +114,13 @@
 		top: 2px;
 		color: white;
 	}
+	.pause-icon {
+		font-size: 30px;
+		position: absolute;
+		left: 0px;
+		top: 4px;
+		color: white;
+	}
 	.time-change{
 		font-size: 12px;
 		color: #a1a1a1;
@@ -103,6 +138,52 @@
 			position: absolute;
 			right: -10px;
 			bottom: 30px;
+		}
+	}
+	.circle-content {
+		min-width: 32px;
+		min-height: 32px;
+		position: fixed;
+		right: 10px;
+		top: 10px;
+		.i-con{
+			border-radius: 50%;
+			width: 32px;
+			height: 32px;
+			background: #373c46;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+		}
+		.play-icon{
+			font-size: 24px;
+			position: absolute;
+			left: 4px;
+			top: 2px;
+			color: #cccdd0;
+		}
+		.pause-icon{
+			top: 4px;
+			font-size: 24px;
+			position: absolute;
+			left: 4px;
+			color: #cccdd0;
+		}
+		.expand{
+			display: none;
+			vertical-align: middle;
+			line-height: 32px;
+			color: #cccdd0;
+			i {
+				padding-top: 4px;
+				cursor: pointer;
+			}
+		}
+		&:hover {
+			width: 50px;
+			.expand {
+				display: inline-block;
+			}
 		}
 	}
 }

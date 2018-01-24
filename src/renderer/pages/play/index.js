@@ -28,7 +28,15 @@ export default {
       // 当前播放事件
       currentTime: '00:00',
       // 歌曲总时间
-      allTime: '00:00'
+      allTime: '00:00',
+      showProgress: {
+        'display-none': false,
+        'circle-content': true
+      },
+      detailClass: {
+        'display-none': true,
+        'content': true
+      }
     }
   },
   methods: {
@@ -58,19 +66,41 @@ export default {
       this.showVolumeTag = !this.showVolumeTag;
     },
     paly() {
+      if (!lzPlay.checkVidioStatus()) {
+        this.search();
+      }
       this.playTag = true;
       lzPlay.vidioPlay();
     },
     pause() {
+      if (this.playUrl === '' || this.playList.length === 0) {
+        return;
+      }
       this.playTag = false;
       lzPlay.vidioPause();
     },
     changeVolume(pro){
       lzPlay.setVolume(pro / 100);
+    },
+    showDetail() {
+      this.detailClass['display-none'] = false;
+      this.showProgress['display-none'] = true;
+    },
+    hideDetail() {
+      this.detailClass['display-none'] = true;
+      this.showProgress['display-none'] = false;
     }
   },
   created() {
     const self = this;
+
+    // 组件加载后即取出播放历史
+    this.playList = History.get();
+    this.playIndex = 0;
+    if (this.playList.length > 0) {
+      this.playUrl = this.playList[this.playIndex].href;
+    }
+
     lzPlay.initVidio({
       // 音乐数据缓存完毕
       'loadeddata': () => {

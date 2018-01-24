@@ -1,6 +1,7 @@
 let vidio;
 let vid_curtime = 0 ;
 let vid_length = 0;
+let vid_palyed = false;
 
 function initVidio(obj) {
 	if(typeof vidio !== "undefined"){
@@ -32,6 +33,7 @@ function initVidio(obj) {
  * 设置音乐url
  */
 function setVidioUrl(url){
+	vid_palyed = true;
 	if(typeof vidio === "undefined"){
 		initVidio();
 	}
@@ -87,6 +89,9 @@ let lzPlay = {
 		if (vidio) {
 			vidio.volume = size;
 		}
+	},
+	checkVidioStatus() {
+		return vid_palyed;
 	}
 }
 
