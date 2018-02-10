@@ -3,7 +3,6 @@ var QrCodeReader = require('qrcode-reader');
 var fs = require("fs");
 var QRCode = require('qrcode')
 
-import './style.css'
 export default {
   name: 'code-page',
   data () {

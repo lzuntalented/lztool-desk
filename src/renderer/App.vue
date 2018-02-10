@@ -12,11 +12,14 @@
         <el-menu-item :index="index + ''">{{item.label}}</el-menu-item>
       </a>
     </el-submenu>
-    <a href="#/music">
+    <a class="display-inline-block lz-container" href="#/music">
       <el-menu-item index="41">音乐台</el-menu-item>
     </a>
-    <a href="#/markdown">
+    <a class="display-inline-block" href="#/markdown">
       <el-menu-item index="42">Markdown</el-menu-item>
+    </a>
+    <a class="display-inline-block" href="#/apitest">
+      <el-menu-item index="43">接口测试</el-menu-item>
     </a>
   </el-menu>
     <router-view></router-view>
@@ -64,6 +67,7 @@
     .el-menu-container{
       a{
         text-decoration: none;
+      
       }
     }
     

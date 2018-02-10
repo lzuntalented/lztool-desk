@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-import TreeView from 'vue-json-tree-view'
-
 import App from './App'
 import router from './router'
 import store from './store'
+
+import './style';
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -13,7 +13,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
-// import './assets/style.css';
+import TreeView from 'vue-json-tree-view'
 
 Vue.use(mavonEditor)
 Vue.use(ElementUI)

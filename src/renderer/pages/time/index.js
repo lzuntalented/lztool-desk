@@ -1,4 +1,3 @@
-import './style.css'
 export default {
   name: 'time-page',
   interval: null,

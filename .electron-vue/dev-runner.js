@@ -33,7 +33,7 @@ function logStats (proc, data) {
     log += `  ${data}\n`
   }
 
-  log += '\n' + chalk.yellow.bold(`┗ ${new Array(28 + 1).join('-')}`) + '\n'
+  log += '\n' + chalk.yellow.bold(`${new Array(28 + 1).join('-')}`) + '\n'
 
   console.log(log)
 }
