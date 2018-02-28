@@ -76,14 +76,17 @@ export default {
         hostname: urlObject.hostname,
         port: urlObject.port || 80,
         path: urlObject.pathname,
-        method: 'GET'
+        method: 'GET',
+        headers: {
+          "Content-Type": 'application/x-www-form-urlencoded'
+        }
       };
 
       // 请求参数
       let params = urlObject.query || '';
 
       let tmp = [];
-      const pLen = this.requestParamsTable.length;
+      let pLen = this.requestParamsTable.length;
       this.requestParamsTable.forEach((it, idx) => {
         if (pLen - 1 === idx) return;
         if (it.key.trim() === '') return;
@@ -94,6 +97,21 @@ export default {
       }
 
       // console.log(params);
+      // 请求头
+      const headers = {
+        'Transfer-Encoding': 'chunked'
+      };
+      pLen = this.requestHeaderTable.length;
+      this.requestHeaderTable.forEach((it, idx) => {
+        if (pLen - 1 === idx) return;
+        if (it.key.trim() === '') return;
+        const key = it.key.trim();
+        const value = it.value.trim();
+        headers[key] = value;
+      });
+      if (pLen > 1) {
+        options.headers = headers;
+      }
 
       // https请求检测
       if (url.startsWith('https://')) {
@@ -101,10 +119,17 @@ export default {
         httpHandler = https;
       }
       
+      this.responseTableColumns[0].key = '';
+      this.responseTableColumns[0].value = '';
+
       // post请求检测
       if (this.method === 'POST') {
         options.method = this.method;
+      } else {
+        options.path += '?' + params;
       }
+      
+      options.headers['Content-Length'] = params.length;
       // 开始请求
       const req = httpHandler.request(options, res => {
         // console.log(`STATUS: ${res.statusCode}`);
@@ -127,9 +152,10 @@ export default {
       });
 
       req.on('error', (e) => {
-        // this.$message.error(`problem with request: ${e.message}`);
+        this.$message.error(`problem with request: ${e.message}`);
       });
-
+      console.log(options);
+console.log(params);
       req.write(params);
       req.end();
     }
