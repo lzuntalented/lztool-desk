@@ -55,7 +55,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.16.2",
     "crypto.js": "^1.0.1",
     "element-ui": "^2.0.7",
     "jimp": "^0.2.28",

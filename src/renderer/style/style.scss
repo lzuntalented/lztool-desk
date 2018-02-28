@@ -4,9 +4,18 @@
 .display-inline-block{
     display: inline-block;
 }
+.display-block{
+    display: block !important;
+}
 a:-webkit-any-link{
     text-decoration: none;
 }
 .lz-container{
     color: rebeccapurple;
+}
+.m-v{
+    margin: 0 auto !important;
+}
+.m-b-10{
+    margin-bottom: 10px;
 }
