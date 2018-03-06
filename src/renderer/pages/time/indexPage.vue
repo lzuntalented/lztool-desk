@@ -77,6 +77,12 @@
 
 <style lang="scss">
 .time-container{
+	.text-center{
+		text-align: center;
+	}
+	.margin-t-40{
+		margin-top: 40px;
+	}
 	.select-container{
 		input{
 			width: 80px;
