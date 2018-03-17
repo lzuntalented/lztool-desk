@@ -12,6 +12,9 @@
         <el-menu-item :index="index + ''">{{item.label}}</el-menu-item>
       </a>
     </el-submenu>
+    <a class="display-inline-block" href="#/fanyi">
+      <el-menu-item index="44">翻译</el-menu-item>
+    </a>
     <a class="display-inline-block lz-container" href="#/music">
       <el-menu-item index="41">音乐台</el-menu-item>
     </a>

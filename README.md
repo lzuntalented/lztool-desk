@@ -1,18 +1,13 @@
-# lz-collect
+# lztool-desk
 
-> An electron-vue project
+> 开发工具集
 
-#### Build Setup
-``` bash
-# install dependencies
+#### 使用
+```
 npm install
-
-# serve with hot reload at localhost:9080
+// 启动调试
 npm run dev
-
-# build electron application for production
-npm run build
-
+// 构建未开发
 ```
 
 ### 功能
@@ -27,8 +22,10 @@ npm run build
 * [x] url编解码
 * [x] 正则表达式检测
 
+* [x] 翻译(使用有道翻译)
 * [x] 音乐播放器(音乐来源网易云)
 * [x] markdown编辑器
+* [x] 接口测试
 
 ---
 

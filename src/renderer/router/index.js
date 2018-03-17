@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/fanyi',
+      name: 'fanyi-page',
+      component: require('@/pages/fanyi/indexPage').default
+    },
+    {
       path: '/apitest',
       name: 'apitest-page',
       component: require('@/pages/apitest/indexPage').default
